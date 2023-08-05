@@ -20,16 +20,16 @@
             <table class="table table-striped testo-light">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">GIO</th>
-                        <th scope="col">DATA INSERIMENTO</th>
-                        <th scope="col">MD</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">DATA</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody *ngIf="!loading_table">
                     <tr *ngFor="let item of schede.giocate.table[idxTable]">
-                        <td class="testo-light">{{item.id}}</td>
                         <td class="testo-light">{{item.giornata}}</td>
+                        <td class="testo-light">{{item.punti}}</td>
                         <td class="testo-light">{{item.data_modifica}}</td>
 
                         <td *ngIf="item.modificabile=='SI'" class="testo-light"><i class="bi bi-pencil cursore"

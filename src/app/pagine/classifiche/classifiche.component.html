@@ -27,7 +27,7 @@
                             <th scope="col"></th>
                             <th scope="col">PT</th>
                             <th scope="col">UTENTE</th>
-                            <th scope="col"></th>
+                            <th scope="col"><i class="bi bi-graph-up-arrow"></i></th>
                         </tr>
                     </thead>
                     <tbody *ngIf="!loading_table">
@@ -38,9 +38,9 @@
                             </td>
                             <td class="testo-light">{{item.utente}}</td>
                             <td class="testo-light">
-                                <i *ngIf="item.pos<item.ex" class="bi bi-arrow-up-circle-fill"></i>
-                                <i *ngIf="item.pos==item.ex" class="bi bi-arrow-right-circle-fill"></i>
-                                <i *ngIf="item.pos>item.ex" class="bi bi-arrow-down-circle-fill"></i>
+                                <i *ngIf="item.pos<item.ex" class="bi bi-arrow-up"></i>
+                                <i *ngIf="item.pos==item.ex" class="bi bi-arrow-left-right"></i>
+                                <i *ngIf="item.pos>item.ex"  class="bi bi-arrow-down"></i>
                             </td>
                         </tr>
                     </tbody>
