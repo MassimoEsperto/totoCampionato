@@ -1,0 +1,72 @@
+<!-- Modal -->
+<div class="modal fade" id="formUtente" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="formUtenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formUtenteLabel">Aggiorna utente</h5>
+            </div>
+            <div class="modal-body">
+
+                <form #userForm="ngForm" (ngSubmit)="onUpdate(utente)">
+
+                    <div class="pb-16">
+
+                        <div class="mb-3">
+                            <label>Username(max 10 caratteri)</label>
+                            <input name="username" type="text" class="form-control" placeholder="Username"
+                                maxlength="10" minlength="3" style="text-transform:uppercase"
+                                [(ngModel)]="utente.username" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input type="email" class="form-control" [(ngModel)]="utente.email" name="email" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label>cellulare</label>
+                            <input type="text" class="form-control" [(ngModel)]="utente.cellulare" name="cellulare"
+                                maxlength="10" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Ruolo utente</label>
+                            <select class="form-select" aria-label="Default select example" name="ruolo"
+                                [(ngModel)]="utente.ruolo" required>
+                                <option *ngFor="let item of combo.utente_ruoli" [ngValue]="item.id">{{item.descrizione}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Quota versata</label>
+                            <input class="form-control" type="number" [(ngModel)]="utente.versato" name="versato"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Competizioni</label>
+                            <select class="form-select" multiple aria-label="multiple select example" name="competizioni"
+                                [(ngModel)]="utente.competizioni" >
+                                <option *ngFor="let item of combo.competizioni" [ngValue]="item.id">{{item.sigla}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <br>
+                    </div>
+                    <div class="pt-16">
+                        <my-button [disabled]="!userForm.form.valid" [block]="true" [color]="'btn-success'"
+                            [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                        </my-button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" #closeModal class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+            </div>
+        </div>
+    </div>
+</div>

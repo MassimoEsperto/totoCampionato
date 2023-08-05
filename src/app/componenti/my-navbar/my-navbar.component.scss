@@ -1,0 +1,41 @@
+
+.navigazione{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    color: white;
+    padding-bottom: 4px;
+}
+
+.colonna{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-fisso {
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    background-color: rgb(52,72,88);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 4px;
+   
+ }
+
+.icona{
+    padding-bottom: 4px;
+}
+
+.hide{
+    display: none;
+}

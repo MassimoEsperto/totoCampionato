@@ -1,0 +1,65 @@
+<div *ngIf="comp">
+    <div class="card text-center">
+        <div class="card-header">
+            ASSOCIA GIORNATE {{comp.sigla}}
+        </div>
+        <div class="card-body">
+
+            <form #datiForm="ngForm" (ngSubmit)="loading_btn=true;submitForm(datiForm.form.value)">
+
+                <div class="pt-16">
+                    <select class="form-select" aria-label="select" name="giornata" ngModel required>
+                        <option *ngFor="let item of disponibili" [ngValue]="item.id">{{item.descrizione}}
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="pt-16 pb-16">
+                    <input name="data_giornata" type="datetime-local" class="form-control" min="2018-01-01"
+                        max="2018-12-31" ngModel required>
+                </div>
+
+
+                <div class="pt-16 pb-16">
+                    <my-button [disabled]="!datiForm.form.valid||disponibili.length==0" [block]="true"
+                        [color]="'btn-primary'" [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                    </my-button>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+<div class="pt-32 pb-64">
+    <div class="card-table">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">GIORNATA</th>
+                        <th scope="col">DATA</th>
+                        <th scope="col">XX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of compresi">
+                        <td>{{item.id}}</td>
+                        <td>{{item.descrizione}}</td>
+                        <td>{{item.data_giornata}}</td>
+                        <td><i class="bi bi-trash cursore" (click)="onDeleteItem(item)" data-bs-toggle="modal"
+                                data-bs-target="#confirmModal"></i></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

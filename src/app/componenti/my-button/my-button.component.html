@@ -1,0 +1,20 @@
+<div *ngIf="disabled&&!loading">
+  <button [ngClass]="{'blocco': block == true}" class="btn {{color}}" type="{{type}}" disabled>
+    {{label}}
+  </button>
+</div>
+<div *ngIf="loading">
+  <button [ngClass]="{'blocco': block == true}" class="btn {{color}}" type="{{type}}" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </button>
+</div>
+<div *ngIf="!disabled&&!loading&&!confirm">
+  <button [ngClass]="{'blocco': block == true}" (click)="myClick.emit()" class="btn {{color}}"
+    type="{{type}}">{{label}}</button>
+</div>
+
+<div *ngIf="!disabled&&!loading&&confirm">
+  <button [ngClass]="{'blocco': block == true}" (click)="showDialog()" type="button" data-bs-toggle="modal"
+    data-bs-target="#confirmModal" class="btn {{color}}">{{label}}</button>
+</div>
+

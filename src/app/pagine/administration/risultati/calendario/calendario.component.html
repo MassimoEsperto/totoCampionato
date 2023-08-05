@@ -1,0 +1,112 @@
+<h2 class="annuncio">GESTIONE RISULTATI</h2>
+
+<div *ngIf="loading_page">
+
+</div>
+<div *ngIf="!loading_page" class="pt-32 pb-64">
+    <div *ngIf="giornate&&comp">
+        <div class="card text-center">
+            <div class="card-header">
+                CREA SCHEDA {{comp.sigla}}
+            </div>
+            <div class="card-body">
+
+                <div style="padding-top: 16px;">
+                    <label for="selection">GIORNATA DA COMPILARE</label>
+                    <select [disabled]="loading_btn" id="selection" class="form-select" (change)="onChangeTipo($event)"
+                        ngModel>
+                        <option *ngFor="let item of giornate" value="{{item.id}}">{{item.descrizione}}
+                        </option>
+                    </select>
+                </div>
+
+                <div *ngIf="giornata" class="pt-8">
+                    <form #giornataUpdate="ngForm"
+                        (ngSubmit)="loading_btn=true;onUpdateGiornata(giornataUpdate.form.value)">
+                        <div class="display-column">
+
+                            <div style="padding-top: 16px;">
+                                <label for="dayDate">DATA GIORNATA</label>
+                                <input id="dayDate" class="form-control" type="datetime-local" name="data_giornata"
+                                    [(ngModel)]="giornata.data_giornata" required />
+                            </div>
+
+                            <div class="pt-8">
+                                <my-button [disabled]="!giornataUpdate.form.valid" [block]="false"
+                                    [color]="'btn-dark btn-sm'" [loading]="loading_btn" [submit]="true"
+                                    [label]="'AGGIORNA'">
+                                </my-button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="pt-32 pb-64">
+        <div class="card-table">
+
+            <div class="table-responsive">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th scope="col">VIEW</th>
+                            <th scope="col">RISULTATO</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of scheda_risultati">
+                            <td>
+                                <div class="display-column">
+                                    <div> {{item.view}}</div>
+                                    <div>{{item.data_partita}}</div>
+                                </div>
+                            </td>
+                            <td>{{item.risultato}}
+                                <div style="min-width: 160px;"></div>
+                                <div class="collapse" id="{{item.identificativo}}">
+                                    <div class="pt-8">
+                                        <form #partitaUpdate="ngForm"
+                                            (ngSubmit)="loading_btn=true;onUpdatePartita(partitaUpdate.form.value,item)">
+                                            <div class="display-column">
+                                                <div style="min-width: 160px;">
+                                                    <select class="form-select form-select-sm" name="risultato"
+                                                        [(ngModel)]="item.risultato" required>
+                                                        <option *ngFor="let opz of opzioni" [ngValue]="opz.view">
+                                                            {{opz.view}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                                <div style="padding-top: 16px;">
+                                                    <input class="form-control" type="datetime-local"
+                                                        name="data_partita" [(ngModel)]="item.data_partita" required />
+                                                </div>
+
+                                                <div class="pt-8">
+                                                    <my-button [disabled]="!partitaUpdate.form.valid" [block]="false"
+                                                        [color]="'btn-dark btn-sm'" [loading]="loading_btn"
+                                                        [submit]="true" [label]="'CONFERMA'">
+                                                    </my-button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </td>
+                            <td><i class="bi bi-pencil cursore" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#'+item.identificativo" aria-expanded="false"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

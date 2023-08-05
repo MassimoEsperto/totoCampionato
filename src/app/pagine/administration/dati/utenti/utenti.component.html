@@ -1,0 +1,50 @@
+<h2 class="annuncio">GESTIONE UTENTI</h2>
+
+
+<div class="pt-32 pb-64">
+    <div class="card-table fullscreen">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">USERNAME</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">COGNOME</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">CELLULARE</th>
+                        <th scope="col">RUOLO</th>
+                        <th scope="col">VERSATO</th>
+                        <th scope="col">GIOCATE</th>
+                        <th scope="col">COMPETIZIONI</th>
+                        <th scope="col">MOD</th>
+                        <th scope="col">XX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of utenti">
+                        <td>{{item.id}}</td>
+                        <td>{{item.username}}</td>
+                        <td>{{item.nome}}</td>
+                        <td>{{item.cognome}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.cellulare}}</td>
+                        <td>{{viewRuolo(item.ruolo)}}</td>
+                        <td>{{item.versato}} €</td>
+                        <td>{{item.giocate}}</td>
+                        <td>{{viewComp(item.competizioni)}}</td>
+                        <td><i class="bi bi-pencil cursore" (click)="onUpdate(item)" data-bs-toggle="modal"
+                                data-bs-target="#formUtente"></i></td>
+                        <td><i *ngIf="item.ruolo!=RUOLO.ADMIN" class="bi bi-trash cursore" (click)="onDeleteItem(item)" data-bs-toggle="modal"
+                                data-bs-target="#confirmModal"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<form-utente [utente]="utente" [combo]="combo" (submit)="reloadUtenti()"></form-utente>

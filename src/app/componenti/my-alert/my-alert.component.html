@@ -1,0 +1,6 @@
+<div *ngIf="message  && message.text.length > 0" [ngClass]="message.cssClass" class="fisso">
+    <i *ngIf="message.type=='success'" class="bi bi-hand-thumbs-up-fill"></i>
+    <i *ngIf="message.type=='error'" class="bi bi-hand-thumbs-down-fill"></i>
+    {{ message.text}}
+</div>
+

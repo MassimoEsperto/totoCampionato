@@ -1,0 +1,65 @@
+<!-- Modal -->
+<div class="modal fade" id="formCompetizioni" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="formCompetizioniLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="competizione.id" class="modal-title" id="formCompetizioniLabel">Modifica competizione</h5>
+        <h5 *ngIf="!competizione.id" class="modal-title" id="formCompetizioniLabel">Aggiungi competizione</h5>
+      </div>
+      <div class="modal-body">
+
+        <form #compForm="ngForm" (ngSubmit)="onCompetizione(competizione)">
+
+          <div class="pb-16">
+
+            <div class="mb-3">
+              <label>Sigla(max 10 caratteri)</label>
+              <input name="sigla" type="text" class="form-control" placeholder="Sigla" maxlength="10" minlength="3"
+                style="text-transform:uppercase" [(ngModel)]="competizione.sigla" required>
+            </div>
+
+            <div class="mb-3">
+              <label>Attiva competizione</label>
+              <select class="form-select" aria-label="Default select example" name="is_attiva"
+                [(ngModel)]="competizione.is_attiva" required>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label>Nome competizione</label>
+              <input class="form-control" type="text" [(ngModel)]="competizione.nome" name="nomw" minlength="3"
+                required />
+            </div>
+
+            <div class="mb-3">
+              <label>Scadenza (es. 2021/08/30 10:00:00)</label>
+              <input class="form-control" type="text" [(ngModel)]="competizione.scadenza" name="scadenza" />
+            </div>
+
+            <div class="mb-3">
+              <label>Schede sbloccate</label>
+              <select class="form-select" aria-label="Default select example" name="is_open"
+                [(ngModel)]="competizione.is_open" required>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
+              </select>
+            </div>
+            <br>
+          </div>
+          <div class="pt-16">
+            <my-button [disabled]="!compForm.form.valid" [block]="true" [color]="'btn-success'" [loading]="loading_btn"
+              [submit]="true" [label]="'CONFERMA'">
+            </my-button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button"  #closeModal class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+      </div>
+    </div>
+  </div>
+</div>

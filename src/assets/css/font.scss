@@ -1,0 +1,12 @@
+//@import "https://fonts.cdnfonts.com/css/howlimit";
+
+@font-face {
+    font-family: 'Howlimit';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Howlimit'), url('../../assets/font/Howlimit-axRO5.woff') format('woff');
+}
+
+* {
+    font-family: 'Howlimit', sans-serif !important
+}

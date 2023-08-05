@@ -1,0 +1,69 @@
+<div *ngIf="combo&&comp">
+    <div class="card text-center">
+        <div class="card-header">
+            ASSOCIA PRONOSTICI {{comp.sigla}}
+        </div>
+        <div class="card-body">
+
+            <form #eventoForm="ngForm" (ngSubmit)="loading_btn=true;onSetEventoPronostico(eventoForm.form.value)">
+
+                <div style="padding-top: 16px;">
+                    <select class="form-select" aria-label="Default select example" name="gruppo" ngModel required>
+                        <option *ngFor="let item of combo.tipi_pronostici" [ngValue]="item.id">{{item.descrizione}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="pt-16 pb-16">
+                    <input name="punti" type="number" class="form-control" placeholder="Punti" ngModel required>
+                </div>
+
+                <div class="pt-16 pb-16">
+                    <input name="minimo" type="number" class="form-control" placeholder="Minimo" ngModel required>
+                </div>
+
+                <div class="pt-16 pb-16">
+                    <my-button [disabled]="!eventoForm.form.valid" [block]="true" [color]="'btn-primary'"
+                        [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                    </my-button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="pt-32 pb-64">
+    <div class="card-table">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">VIEW</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">MIN</th>
+                        <th scope="col">XX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of eventi">
+                        <td>{{item.id_gruppo_punti}}</td>
+                        <td>{{item.descrizione}}</td>
+                        <td>{{item.valore_punti}}</td>
+                        <td>{{item.quantita_minima}}</td>
+                        <td><i class="bi bi-trash cursore" (click)="onDeleteItem(item)" data-bs-toggle="modal"
+                                data-bs-target="#confirmModal"></i></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

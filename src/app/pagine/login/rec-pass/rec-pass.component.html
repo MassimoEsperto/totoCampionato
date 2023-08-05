@@ -1,0 +1,33 @@
+<div class="card text-center animate__animated animate__rubberBand">
+    <div class="card-header testo-bold">
+        RECUPERA PASSWORD UTENTE
+    </div>
+    <div class="card-body">
+
+        <form #loginForm="ngForm" (ngSubmit)="loading_btn=true;onRecPass(loginForm.form.value)">
+
+            <div class="pt-16 pb-16">
+                <select class="form-select" aria-label="select"
+                    name="utente"  ngModel required>
+                    <option *ngFor="let item of combo" [ngValue]="item">{{item.username}}
+                    </option>
+                </select>
+            </div>
+          
+
+
+            <div class="pt-16 pb-16">
+                <my-button [disabled]="!loginForm.form.valid" [block]="true" [color]="'btn-danger'"
+                    [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                </my-button>
+            </div>
+
+        </form>
+
+
+    </div>
+    <div class="card-footer text-muted display-around">
+        <a class="cursore" (click)="submitto.emit(LOGIN.SIGN_IN)">Login</a>
+        <a class="cursore" (click)="submitto.emit(LOGIN.REGISTER)">Registrati</a>
+    </div>
+</div>

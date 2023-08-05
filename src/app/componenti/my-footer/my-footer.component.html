@@ -1,0 +1,29 @@
+<div class="impostazioni">
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <div class="pt-16 pb-8">
+            <div class="my-flex-around">
+                <div class="flex-colonna">
+                    <strong>GENERALI</strong>
+                    <br>
+                    <span class="cursore pb-8" (click)="goToLink('https://chat.whatsapp.com/COGfo4jlkrlGtjad25EPHW')">Whatsapp</span>
+                    <span class="cursore pb-8" (click)="logOut()">Log Out</span>
+                    <span *ngIf="isAdmin" class="cursore pb-8" routerLink="/administration">ADMIN</span>
+                </div>
+                <div class="flex-colonna">
+                    <strong>COMPETIZIONE</strong>
+                    <br>
+                    <span class="cursore pb-8" (click)="goToLink('http://marescafantaeuropeo.altervista.org/pronostici/assets/download/regolamento.pdf')">Regolamento</span>
+                    <span class="cursore pb-8" (click)="onChangeCompetizione()">Cambia Lega</span>
+                    <span *ngIf="isAdmin" class="cursore pb-8" routerLink="/administration">ADMIN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2022 Copyright: PronosticAmici {{versione}}</div>
+    <!-- Copyright -->
+</div>

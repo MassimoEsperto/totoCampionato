@@ -1,0 +1,30 @@
+<div class="pt-32 pb-64">
+    <div class="card-table">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">UTENTE</th>
+                    <th scope="col">TEMPO</th>
+                    <th scope="col">COMPETIZIONE</th>
+                    <th scope="col">XX</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of schede">
+                    <td>{{item.id}}</td>
+                    <td>{{item.utente}}</td>
+                    <td>{{item.tempo}}</td>
+                    <td>{{item.competizione}}</td>
+                    <td><i class="bi bi-trash cursore" (click)="onDeleteItem(item)" data-bs-toggle="modal"
+                        data-bs-target="#confirmModal"></i></td>
+                  </tr>
+                
+                </tbody>
+              </table>
+          </div>
+        </div>
+
+</div>

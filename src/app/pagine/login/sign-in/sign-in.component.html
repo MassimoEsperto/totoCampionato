@@ -1,0 +1,39 @@
+<div class="card text-center animate__animated animate__rubberBand">
+    <div class="card-header testo-bold">
+        LOGIN
+    </div>
+    <div class="card-body">
+
+        <form #loginForm="ngForm" (ngSubmit)="loading_btn=true;onLogin(loginForm.form.value)">
+
+            <div class="pt-16 pb-16">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input id="username" name="username" type="text" class="form-control" placeholder="Username" ngModel
+                        required>
+                </div>
+            </div>
+            <div class="pt-16 pb-16">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password"
+                        ngModel required>
+                </div>
+            </div>
+
+
+            <div class="pt-16 pb-16">
+                <my-button [disabled]="!loginForm.form.valid" [block]="true" [color]="'btn-danger'"
+                    [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                </my-button>
+            </div>
+
+        </form>
+
+
+    </div>
+    <div class="card-footer text-muted display-around">
+        <a class="cursore" (click)="submitto.emit(LOGIN.REGISTER)">Registrati</a>
+        <a class="cursore" (click)="submitto.emit(LOGIN.REC_PASS)">Recupera Password</a>
+    </div>
+</div>

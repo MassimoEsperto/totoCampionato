@@ -1,0 +1,22 @@
+.flex-colonna{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ .my-flex-around{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.1);
+ }
+
+.cursore{
+    color: white !important;
+    cursor: pointer;
+}

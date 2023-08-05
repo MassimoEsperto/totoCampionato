@@ -1,0 +1,84 @@
+<div *ngIf="combo">
+
+  <nav class="navbar navbar-expand bg-dark navbar-dark sticky-top" style="border-radius: 8px;">
+
+    <ul class="navbar-nav pl-8">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle bg-dark" role="button"  data-bs-toggle="dropdown">DATI</a>
+          <ul class="dropdown-menu">
+            <li (click)="tabSelected(TAB_ASS.DATI_UTENTI)"><a class="dropdown-item cursore">GEST UTENTI</a></li>
+            <li (click)="tabSelected(TAB_ASS.DATI_SQUADRE)"><a class="dropdown-item cursore">CREA SQUADRE</a></li>
+            <li (click)="tabSelected(TAB_ASS.DATI_SCHEDE)"><a class="dropdown-item cursore">GEST SCHEDE</a></li>
+            <li (click)="tabSelected(TAB_ASS.DATI_COMPETIZIONI)"><a class="dropdown-item cursore">COMPETIZIONI</a></li>
+          </ul>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.CHIUSA}" role="button" data-bs-toggle="dropdown">EVENTI</a>
+          <ul class="dropdown-menu">
+            <li (click)="tabSelected(TAB_ASS.EVENTI_SQUADRE)"><a class="dropdown-item cursore">ASS SQUADRE</a></li>
+            <li (click)="tabSelected(TAB_ASS.EVENTI_PRONOSTICI)"><a class="dropdown-item cursore">ASS PRONOSTICI</a></li>
+            <li (click)="tabSelected(TAB_ASS.EVENTI_CALENDARIO)"><a class="dropdown-item cursore">CALENDARIO</a></li>
+            <li (click)="tabSelected(TAB_ASS.EVENTI_SCHEDE)"><a class="dropdown-item cursore">CREA SCHEDE</a></li>
+          </ul>
+        </li>  
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.APERTA}" role="button" data-bs-toggle="dropdown">RIS</a>
+          <ul class="dropdown-menu">
+            <li (click)="tabSelected(TAB_ASS.RISULTATI)"><a class="dropdown-item cursore">CALENDARIO</a></li>
+           <!--  <li (click)="tabSelected(TAB_ASS.MODIFICABILI)"><a class="dropdown-item cursore">DATE PARTITE</a></li> -->
+          </ul>
+        </li>
+    </ul>
+ 
+</nav>
+
+
+
+  <div class="content-tabs pt-32">
+    <div [ngSwitch]="tabs">
+      <!-- DATI-->
+      <utenti *ngSwitchCase="TAB_ASS.DATI_UTENTI" [combo]="combo"></utenti>
+
+      <squadre *ngSwitchCase="TAB_ASS.DATI_SQUADRE"></squadre>
+
+      <gestione-schede *ngSwitchCase="TAB_ASS.DATI_SCHEDE"></gestione-schede>
+
+      <competizioni *ngSwitchCase="TAB_ASS.DATI_COMPETIZIONI" (selected)="selected($event)"></competizioni>
+
+
+      <!-- EVENTI-->
+      <ass-squadre-comp *ngSwitchCase="TAB_ASS.EVENTI_SQUADRE" [comp]="competizione" [combo]="combo"></ass-squadre-comp>
+
+      <ass-giornate-comp *ngSwitchCase="TAB_ASS.EVENTI_CALENDARIO" [comp]="competizione"></ass-giornate-comp>
+
+      <ass-tipi-pronostici *ngSwitchCase="TAB_ASS.EVENTI_PRONOSTICI" [comp]="competizione" [combo]="combo">
+      </ass-tipi-pronostici>
+
+      <scheda-master *ngSwitchCase="TAB_ASS.EVENTI_SCHEDE" [comp]="competizione" [combo]="combo"></scheda-master>
+
+
+      <!-- RISULTATI-->
+      <calendario *ngSwitchCase="TAB_ASS.RISULTATI" [comp]="competizione"></calendario>
+      <eventi-modificabili *ngSwitchCase="TAB_ASS.MODIFICABILI" [comp]="competizione"></eventi-modificabili>
+     
+
+      <div *ngSwitchDefault class="testo-light">
+        IN QUESTA SESSIONE L'ADMIN PUÒ GESTIRE UTENTI E COMPETIZIONI.
+        <br>
+        1) NEL PRIMO STEP QUELLO DEI DATI SI POSSONO NOMINARE LE NUOVE SQUADRE E CANNONIERI RIGUARDANTE TUTTE LE COMPETIZIONI
+        OLTRE ALLA GESTIONE SI DEGLI UTENTI CHE DELLE COMPETIZIONI,SI POSSONO ANCHE GESTIRE LE INTERE SCHEDE GIÀ GIOCATE.
+        PER PASSARE AL SECONDO STEP È NECESSARIO SELEZIONARE UNA COMPETIZIONE.
+        <br>
+        2) NEL SECONDO STEP RELATIVO AGLI EVENTI SI POSSONO ASSOCIARE ALLA COMPETIZIONI SELEZIONATA LE SQUADRE I CANNONIERI E I TIPI 
+        PRONOSTICI, NONCHÈ LA GENERAZIONE DELLA SCHEDA CHE SARÀ POI PROPOSTA A CHI PARTECIPA AL GIOCO.
+        <br>
+        UNA VOLTA CHE LA COMPETIZIONE VIENE BLOCCATA (QUINDI GLI UTENTI NON POSSO INSERIRE NUOVE SCHEDE) SI PUÒ PASSARE ALL'ULTIMO STEP.
+        <br>
+        3) NEL TERZO STEP QUELLO DEI RISULTATI POSSONO ESSERE INSERITI TUTTI I RISULTATI DEGLI EVENTI SELEZIONATI IN PRECEDENZA.  
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,11 @@
+<div class="fadein">
+
+    <div class="titolo-page">
+        <h1>SCHEDE UTENTE</h1>
+    </div>
+
+
+    <schede-bloccate *ngIf="play_comp.is_open==STATO_COMP.CHIUSA"></schede-bloccate>
+    <schede-sbloccate *ngIf="play_comp.is_open==STATO_COMP.APERTA"></schede-sbloccate>
+
+</div>

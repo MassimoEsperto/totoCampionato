@@ -1,0 +1,14 @@
+<section class="tabs-container">
+    <span class="change-btn prev" (click)="scrollTab(-1)" [class.hide]="atStart">
+        <i class="bi bi-caret-left-fill"></i></span>
+
+    <div class="tabs" [ngStyle]="{'transform': abc }">
+
+        <ng-container *ngFor="let tab of tabs; let i=index">
+            <div *ngIf="tab.disable" class="dis" >{{tab.titolo}}</div>
+            <div *ngIf="!tab.disable" class="tab" [class.active]="selectedIndex===i" (click)="selectTab(i)">{{tab.titolo}}</div>
+        </ng-container>
+    </div>
+    <span class="change-btn next" [class.hide]="atEnd" (click)="scrollTab(1)"><i
+            class="bi bi-caret-right-fill"></i></span>
+</section>

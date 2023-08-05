@@ -1,0 +1,60 @@
+<div class="card text-center">
+    <div class="card-header">
+        AGGIUNGI SQUADRE
+    </div>
+    <div class="card-body">
+
+        <form #teamForm="ngForm" (ngSubmit)="loading_btn=true;setSquadra(teamForm.form.value)">
+
+            <div class="pt-16 pb-16">
+
+                <input name="squadra" type="text" class="form-control" placeholder="Squadra" ngModel required>
+            </div>
+
+            <div class="pt-16 pb-16">
+
+                <input name="sigla" type="text" class="form-control" placeholder="Sigla" maxlength="3" minlength="3"
+                    style="text-transform:uppercase" ngModel required>
+            </div>
+
+            <div class="pt-16 pb-16">
+                <my-button [disabled]="!teamForm.form.valid" [block]="true" [color]="'btn-primary'"
+                    [loading]="loading_btn" [submit]="true" [label]="'CONFERMA'">
+                </my-button>
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>
+
+<div class="pt-32 pb-64">
+    <div class="card-table">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">VIEW</th>
+                        <th scope="col">SIGLA</th>
+                        <th scope="col">XX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of squadre">
+                        <td>{{item.id}}</td>
+                        <td>{{item.descrizione}}</td>
+                        <td>{{item.sigla}}</td>
+                        <td><i class="bi bi-trash cursore" (click)="onDeleteItem(item)" data-bs-toggle="modal"
+                                data-bs-target="#confirmModal"></i></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

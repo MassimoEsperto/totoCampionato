@@ -1,0 +1,49 @@
+<h2 class="annuncio">GESTIONE COMPETIZIONI</h2>
+
+<p class="annuncio" *ngIf="!sigla">NESSUNA COMPETIZIONE SELEZIONATA</p>
+<p class="annuncio" *ngIf="sigla">COMPETIZIONE SELEZIONATA: {{sigla}}</p>
+
+
+<div class="pt-32 pb-64">
+  <div class="card-table">
+
+    <div class="table-responsive">
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">SEL</th>
+            <th scope="col">ID</th>
+            <th scope="col">NOME</th>
+            <th scope="col">SIGLA</th>
+            <th scope="col">SCADENZA</th>
+            <th scope="col">ATTIVA</th>
+            <th scope="col">OPEN</th>
+            <th scope="col">MOD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of competizioni">
+            <td><i class="bi bi-check2-circle cursore" (click)="onSeleziona(item)"></i></td>
+            <td>{{item.id}}</td>
+            <td>{{item.nome}}</td>
+            <td>{{item.sigla}}</td>
+            <td>{{item.scadenza}}</td>
+            <td>{{viewSiNo(item.is_attiva)}}</td>
+            <td>{{viewSiNo(item.is_open)}}</td>
+            <td><i class="bi bi-pencil cursore" (click)="onUpdate(item)" data-bs-toggle="modal"
+                data-bs-target="#formCompetizioni"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pl-16 pb-8 pt-8" style="text-align:right;">
+      <button type="button" class="btn btn-dark" (click)="onAdd()" data-bs-toggle="modal"
+        data-bs-target="#formCompetizioni">
+        NUOVA COMPETIZIONE
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<form-competizioni [competizione]="competizione" (submit)="reloadComp($event)"></form-competizioni>

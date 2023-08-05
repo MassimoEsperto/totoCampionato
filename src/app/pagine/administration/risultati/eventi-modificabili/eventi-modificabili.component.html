@@ -1,0 +1,58 @@
+<h2 class="annuncio">EVENTI MODIFICABILI</h2>
+
+<div *ngIf="loading_page">
+
+</div>
+<div *ngIf="!loading_page" class="pt-32 pb-64">
+    <div class="card-table">
+
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">VIEW</th>
+                        <th scope="col">MODIFICABILE</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of eventi">
+                        <td>{{item.view}}</td>
+                        <td>{{item.modificabile}}</td>
+                        <td>
+                            <div class="collapse" id="{{item.idHTML}}">
+                                <div class="pt-8">
+                                    <form #modEvento="ngForm"
+                                        (ngSubmit)="loading_btn=true;onModEvento(modEvento.form.value,item.id)">
+                                        <div class="display-column">
+                                            <div style="min-width: 160px;">
+                                                <select class="form-select form-select-sm" name="mod" ngModel
+                                                    required>
+                                                    <option *ngFor="let ele of comboSiNo" [ngValue]="ele">
+                                                        {{ele}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="pt-8">
+                                                <my-button [disabled]="!modEvento.form.valid" [block]="false"
+                                                    [color]="'btn-dark btn-sm'" [loading]="loading_btn" [submit]="true"
+                                                    [label]="'CONFERMA'">
+                                                </my-button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                              
+                               
+                            </div>
+                        </td>
+                        <td><i class="bi bi-pencil cursore" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#'+item.idHTML" aria-expanded="false"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
