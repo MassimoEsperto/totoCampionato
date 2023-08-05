@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PronosticAmici": {
+    "TotoCampionato": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PronosticAmici",
+            "outputPath": "dist/TotoCampionato",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PronosticAmici:build:production"
+              "browserTarget": "TotoCampionato:build:production"
             },
             "development": {
-              "browserTarget": "PronosticAmici:build:development"
+              "browserTarget": "TotoCampionato:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,11 +87,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PronosticAmici:build"
+            "browserTarget": "TotoCampionato:build"
           }
         }
       }
     }
   },
-  "defaultProject": "PronosticAmici"
+  "defaultProject": "TotoCampionato"
 }

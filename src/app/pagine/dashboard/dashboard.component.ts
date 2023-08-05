@@ -74,4 +74,8 @@ export class DashboardComponent extends vrs implements OnInit {
     document.body.removeAttribute("style");
 
   }
+
+  goToLink(url: string) {
+    window.open(url, "_blank");
+  }
 }

@@ -27,8 +27,6 @@ import { FormCompetizioni } from '../componenti/my-form-modal/form-competizioni/
 import { FormUtente } from '../componenti/my-form-modal/form-utente/form-utente.component';
 import { AssTipiPronosticiComponent } from '../pagine/administration/eventi/ass-tipi-pronostici/ass-tipi-pronostici.component';
 import { FormScheda } from '../componenti/my-form-modal/form-scheda/form-scheda.component';
-import { SchedeBloccateComponent } from '../pagine/schede-utenti/schede-bloccate/schede-bloccate.component';
-import { SchedeSbloccateComponent } from '../pagine/schede-utenti/schede-sbloccate/schede-sbloccate.component';
 import { SignInComponent } from '../pagine/login/sign-in/sign-in.component';
 import { RegisterComponent } from '../pagine/login/register/register.component';
 import { RecPassComponent } from '../pagine/login/rec-pass/rec-pass.component';
@@ -53,8 +51,6 @@ import { AssGiornateCompComponent } from '../pagine/administration/eventi/ass-gi
     AssGiornateCompComponent,
     AssSquadreCompComponent,
     SchedeUtentiComponent,
-    SchedeBloccateComponent,
-    SchedeSbloccateComponent,
     ClassificheComponent,
     GestioneSchedeComponent,
     CalendarioComponent,
