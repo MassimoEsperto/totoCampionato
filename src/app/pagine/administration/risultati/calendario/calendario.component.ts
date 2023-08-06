@@ -81,8 +81,10 @@ export class CalendarioComponent extends vrs implements OnInit {
       "data_partita": item.data_partita || input.data_partita,
       "pronostico": this.opzioni.find((i: { view: string }) => i.view == item.risultato)
     }
-
+if(item.risultato)
     this.setRisultatoPartita(payload)
+  else
+  this.setDataPartita(payload)
   }
 
   onUpdateGiornata(item: any) {
@@ -98,6 +100,24 @@ export class CalendarioComponent extends vrs implements OnInit {
   setRisultatoPartita(payload: any) {
 
     this.admin.updEvento(payload)
+      .pipe(finalize(() =>
+        this.getSchedaEventi(this.id_giornata)
+      ))
+      .subscribe({
+
+        next: (result: any) => {
+          this.alert.success(SUCCESS_OK);
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        }
+      })
+
+  }
+
+  setDataPartita(payload: any) {
+
+    this.admin.updDataEvento(payload)
       .pipe(finalize(() =>
         this.getSchedaEventi(this.id_giornata)
       ))

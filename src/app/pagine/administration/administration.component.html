@@ -13,7 +13,7 @@
           </ul>
         </li>
        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.CHIUSA}" role="button" data-bs-toggle="dropdown">EVENTI</a>
+          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.APERTA}" role="button" data-bs-toggle="dropdown">EVENTI</a>
           <ul class="dropdown-menu">
             <li (click)="tabSelected(TAB_ASS.EVENTI_SQUADRE)"><a class="dropdown-item cursore">ASS SQUADRE</a></li>
             <li (click)="tabSelected(TAB_ASS.EVENTI_PRONOSTICI)"><a class="dropdown-item cursore">ASS PRONOSTICI</a></li>
@@ -22,7 +22,7 @@
           </ul>
         </li>  
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.APERTA}" role="button" data-bs-toggle="dropdown">RIS</a>
+          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.CHIUSA}" role="button" data-bs-toggle="dropdown">RIS</a>
           <ul class="dropdown-menu">
             <li (click)="tabSelected(TAB_ASS.RISULTATI)"><a class="dropdown-item cursore">CALENDARIO</a></li>
            <!--  <li (click)="tabSelected(TAB_ASS.MODIFICABILI)"><a class="dropdown-item cursore">DATE PARTITE</a></li> -->

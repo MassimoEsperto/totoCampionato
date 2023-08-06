@@ -64,6 +64,19 @@ export class AdminRisultatiService extends HttpSenderService {
         catchError(this.handleError));
   }
 
+  updDataEvento(payload: any): Observable<any> {
+
+    return this.http.post(`${this.buildURL("upd_data_evento")}`,
+      { data: payload }, this.myheaders)
+      .pipe(map((res: any) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data']
+      }),
+        catchError(this.handleError));
+  }
+
   updDataGiornata(payload: any): Observable<any> {
 
     return this.http.post(`${this.buildURL("upd_giornata_comp")}`,
