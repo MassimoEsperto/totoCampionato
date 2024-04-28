@@ -5,14 +5,13 @@
 @import 'assets/css/font.scss';
 
 
-$table-striped-color: yellow;
-
 body{
-
+    background-color: #2c4d89;
     background-image: url("assets/img/sfondo.png");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+    min-height: 100vh;
 }
 
 .page{
