@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'my-locandina',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './my-locandina.component.html',
-  styleUrls: ['./my-locandina.component.scss']
+  styleUrl: './my-locandina.component.scss'
 })
 export class MyLocandina implements OnInit {
 

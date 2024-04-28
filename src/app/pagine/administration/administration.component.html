@@ -1,36 +1,60 @@
 <div *ngIf="combo">
 
-  <nav class="navbar navbar-expand bg-dark navbar-dark sticky-top" style="border-radius: 8px;">
-
-    <ul class="navbar-nav pl-8">
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle bg-dark" role="button"  data-bs-toggle="dropdown">DATI</a>
-          <ul class="dropdown-menu">
-            <li (click)="tabSelected(TAB_ASS.DATI_UTENTI)"><a class="dropdown-item cursore">GEST UTENTI</a></li>
-            <li (click)="tabSelected(TAB_ASS.DATI_SQUADRE)"><a class="dropdown-item cursore">CREA SQUADRE</a></li>
-            <li (click)="tabSelected(TAB_ASS.DATI_SCHEDE)"><a class="dropdown-item cursore">GEST SCHEDE</a></li>
-            <li (click)="tabSelected(TAB_ASS.DATI_COMPETIZIONI)"><a class="dropdown-item cursore">COMPETIZIONI</a></li>
-          </ul>
-        </li>
-       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.APERTA}" role="button" data-bs-toggle="dropdown">EVENTI</a>
-          <ul class="dropdown-menu">
-            <li (click)="tabSelected(TAB_ASS.EVENTI_SQUADRE)"><a class="dropdown-item cursore">ASS SQUADRE</a></li>
-            <li (click)="tabSelected(TAB_ASS.EVENTI_PRONOSTICI)"><a class="dropdown-item cursore">ASS PRONOSTICI</a></li>
-            <li (click)="tabSelected(TAB_ASS.EVENTI_CALENDARIO)"><a class="dropdown-item cursore">CALENDARIO</a></li>
-            <li (click)="tabSelected(TAB_ASS.EVENTI_SCHEDE)"><a class="dropdown-item cursore">CREA SCHEDE</a></li>
-          </ul>
-        </li>  
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle bg-dark" [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.CHIUSA}" role="button" data-bs-toggle="dropdown">RIS</a>
-          <ul class="dropdown-menu">
-            <li (click)="tabSelected(TAB_ASS.RISULTATI)"><a class="dropdown-item cursore">CALENDARIO</a></li>
-           <!--  <li (click)="tabSelected(TAB_ASS.MODIFICABILI)"><a class="dropdown-item cursore">DATE PARTITE</a></li> -->
-          </ul>
-        </li>
-    </ul>
- 
-</nav>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top" style="border-radius: 8px;" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <img src="assets/img/maresca.svg" alt="totoTorneo" width="30" height="30" class="filter-white">
+      </a>
+      <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">DATI</a>
+            <ul class="dropdown-menu">
+              <li (click)="tabSelected(TAB_ASS.DATI_UTENTI)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">GEST UTENTI</a></li>
+              <li (click)="tabSelected(TAB_ASS.DATI_SQUADRE)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">CREA SQUADRE</a></li>
+              <li (click)="tabSelected(TAB_ASS.DATI_SCHEDE)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">GEST SCHEDE</a></li>
+              <li (click)="tabSelected(TAB_ASS.DATI_COMPETIZIONI)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">COMPETIZIONI</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+              [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.CHIUSA}" role="button"
+              data-bs-toggle="dropdown">EVENTI</a>
+            <ul class="dropdown-menu">
+              <li (click)="tabSelected(TAB_ASS.EVENTI_SQUADRE)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">ASS SQUADRE</a></li>
+              <li (click)="tabSelected(TAB_ASS.EVENTI_PRONOSTICI)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">ASS PRONOSTICI</a></li>
+                <li (click)="tabSelected(TAB_ASS.EVENTI_CALENDARIO)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">CALENDARIO</a></li>
+              <li (click)="tabSelected(TAB_ASS.EVENTI_SCHEDE)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">CREA SCHEDE</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+              [ngClass]="{'disabled': !competizione||competizione.is_open==STATO_COMP.APERTA}" role="button"
+              data-bs-toggle="dropdown">RISULTATI</a>
+            <ul class="dropdown-menu">
+              <li (click)="tabSelected(TAB_ASS.RISULTATI)" data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"><a class="dropdown-item cursore">CALENDARIO</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="{{PAGE.DASHBOARD._PATH}}">ESCI</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 
 

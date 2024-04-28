@@ -1,0 +1,85 @@
+<div class="fadein">
+
+    <div class="titolo-page">
+        <h1>SCHEDE UTENTE</h1>
+    </div>
+
+
+    <div class="opzioni" *ngIf="!loading_page">
+
+        <form-scheda [combo]="comboScheda" [scheda_master]="scheda_master" [scheda_selezionata]="scheda_selezionata"
+            (submit)="getSchedeUtenteReload($event)"></form-scheda>
+
+        <view-scheda [record]="record"></view-scheda>
+    </div>
+
+    <div *ngIf="schede&&schede.mancanti.elements.length>0">
+        <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>ATTENZIONE! </strong>Ci sono ancora schede da compilare.
+        </div>
+    </div>
+
+    <div class="pt-32 pb-64">
+        <div class="card card-trasparent">
+
+            <div class="table-responsive" *ngIf="!loading_table">
+                <table class="table table-striped table_trasparent">
+                    <thead>
+                        <tr>
+                            <th scope="col">GIO</th>
+                            <th scope="col">PT</th>
+                            <th scope="col">DATA</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!loading_table">
+                        <tr *ngFor="let item of schede.giocate.table[idxTable]">
+                            <td>{{item.giornata}}</td>
+                            <td>{{item.punti}}</td>
+                            <td>{{item.data_modifica}}</td>
+
+                            <td *ngIf="item.modificabile=='SI'"><i class="bi bi-pencil cursore" (click)="onUpdate(item)"
+                                    data-bs-toggle="modal" data-bs-target="#formScheda"></i></td>
+                            <td *ngIf="item.modificabile=='NO'"><i class="bi bi-eye-fill cursore"
+                                    (click)="onViewItem(item)" data-bs-toggle="modal" data-bs-target="#viewScheda"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="loading_table">
+                        <div class="pt-32 pl-16">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- pagination -->
+            <my-pagination *ngIf="!loading_table" [data]="schede.giocate" (pag)="idxTable=$event"></my-pagination>
+
+            <div *ngIf="!loading_table">
+
+                <div class="pr-16 pb-16 pt-8" style="text-align:right;">
+
+                    <div *ngIf="schede&&schede.mancanti.elements.length>0" class="btn-group dropstart">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            NUOVA SCHEDA
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li *ngFor="let item of schede.mancanti.elements"><a class="dropdown-item cursore"
+                                    (click)="onInsert(item.id)" data-bs-toggle="modal"
+                                    data-bs-target="#formScheda">GIORNATA
+                                    {{item.giornata}}</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

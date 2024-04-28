@@ -1,22 +1,38 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PlayerService } from 'src/app/servizi/player/player.service';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { PlayerService } from 'src/servizi/player/player.service';
+import { MyFooter } from '../my-footer/my-footer.component';
+import { PAGE } from 'src/environments/costanti';
+import { RouterModule } from '@angular/router';
+import { MyNavlink } from '../my-navlink/my-navlink.component';
+import { MyIcona } from '../my-icona/my-icona.component';
+
 
 @Component({
   selector: 'my-navbar',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MyFooter,
+    RouterModule,
+    MyNavlink,
+    MyIcona
+  ],
   templateUrl: './my-navbar.component.html',
-  styleUrls: ['./my-navbar.component.scss']
+  styleUrl: './my-navbar.component.scss'
 })
 export class MyNavbar implements OnInit {
 
-  play_comp = this.player.getCompetizione()
+  exist: boolean = this.player.existCompetizione()
+  PAGE = PAGE
 
-  constructor(private route : ActivatedRoute,private elementRef: ElementRef,private player :PlayerService) { }
+  constructor(private player: PlayerService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  isCollapse:boolean=false
+  isCollapse: boolean = false
 
 
 }

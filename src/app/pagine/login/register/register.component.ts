@@ -1,14 +1,22 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { vrs } from 'src/app/classi/global-variables';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { AuthService } from 'src/app/servizi/autenticazione/auth.service';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { SUCCESS_OK } from 'src/app/classi/costanti';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { MyButton } from 'src/app/componenti/my-button/my-button.component';
+import { SUCCESS_OK } from 'src/environments/env';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { AuthService } from 'src/servizi/autenticazione/auth.service';
+
 
 @Component({
   selector: 'register',
+  standalone: true,
+  imports: [
+    MyButton,
+    FormsModule
+  ],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent extends vrs implements OnInit {
 

@@ -1,0 +1,39 @@
+<div *ngIf="!isCollapse&&!exist" class="colonna">
+    <div>
+        <my-icona [name]="icon" style="color: gray;"></my-icona>
+    </div>
+    <div>
+        <span class="navbar-font-label"><b>{{label}}</b></span>
+    </div>
+</div>
+
+<div *ngIf="!isCollapse&&exist" class="colonna" routerLink="{{link}}">
+    <div>
+        <my-icona [name]="icon"></my-icona>
+    </div>
+    <div>
+        <span class="navbar-font-label"><b>{{label}}</b></span>
+    </div>
+</div>
+
+<div *ngIf="isCollapse&&!exist" class="colonna" data-bs-toggle="collapse"
+    data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni"
+    (click)="myClick.emit()">
+    <div>
+        <my-icona [name]="icon" style="color: gray;"></my-icona>
+    </div>
+    <div>
+        <span class="navbar-font-label"><b>{{label}}</b></span>
+    </div>
+</div>
+
+<div *ngIf="isCollapse&&exist" class="colonna" routerLink="{{link}}" data-bs-toggle="collapse"
+    data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni"
+    (click)="myClick.emit()">
+    <div>
+        <my-icona [name]="icon"></my-icona>
+    </div>
+    <div>
+        <span class="navbar-font-label"><b>{{label}}</b></span>
+    </div>
+</div>

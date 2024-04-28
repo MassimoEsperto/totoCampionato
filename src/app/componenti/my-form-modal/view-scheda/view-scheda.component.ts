@@ -1,14 +1,23 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { vrs } from 'src/app/classi/global-variables';
-import { EventoScheda } from 'src/app/model/EventoScheda';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { PlayerService } from 'src/app/servizi/player/player.service';
 import { finalize } from 'rxjs/operators';
+import { EventoSchedaModel } from 'src/app/classi/model/evento.scheda.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MyButton } from '../../my-button/my-button.component';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { PlayerService } from 'src/servizi/player/player.service';
 
 @Component({
   selector: 'view-scheda',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './view-scheda.component.html',
-  styleUrls: ['./view-scheda.component.scss']
+  styleUrl: './view-scheda.component.scss'
 })
 export class ViewScheda extends vrs {
 
@@ -19,7 +28,7 @@ export class ViewScheda extends vrs {
   }
 
   @Input() record!: any;
-  scheda_master: Array<EventoScheda> = [];
+  scheda_master: Array<EventoSchedaModel> = [];
 
 
   ngOnChanges() {

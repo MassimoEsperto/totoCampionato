@@ -1,17 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { VERSION } from 'src/app/classi/costanti';
-import { vrs } from 'src/app/classi/global-variables';
-import { AuthService } from 'src/app/servizi/autenticazione/auth.service';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { PAGE } from 'src/environments/costanti';
+import { AuthService } from 'src/servizi/autenticazione/auth.service';
+
 
 @Component({
   selector: 'my-footer',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   templateUrl: './my-footer.component.html',
-  styleUrls: ['./my-footer.component.scss']
+  styleUrl: './my-footer.component.scss'
 })
 export class MyFooter extends vrs implements OnInit {
 
   versione = VERSION;
   isAdmin: boolean = false
+  PAGE = PAGE;
 
   constructor(
     private auth: AuthService) {

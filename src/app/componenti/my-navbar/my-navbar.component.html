@@ -2,119 +2,41 @@
 
     <div class="navigazione">
 
-        <div *ngIf="!isCollapse" class="colonna" id="dash" routerLink="/dashboard">
-            <div class="icona">
-                <i class="bi bi-house-door-fill"></i>
+        <!-- HOME -->
+        <my-navlink [isCollapse]="isCollapse" [exist]="true" [link]="PAGE.DASHBOARD.ABSOLUTE._HOME"
+            [icon]="'house'" [label]="'HOME'" (myClick)="isCollapse=false">
+        </my-navlink>
+
+        <!-- GIOCA -->
+        <my-navlink [isCollapse]="isCollapse" [exist]="exist" [link]="PAGE.DASHBOARD.ABSOLUTE._SCHEDE_UTENTE"
+            [icon]="'stadia_controller'" [label]="'GIOCA'" (myClick)="isCollapse=false">
+        </my-navlink>
+
+        <!-- CLASSIFICA -->
+        <my-navlink [isCollapse]="isCollapse" [exist]="exist" [link]="PAGE.DASHBOARD.ABSOLUTE._CLASSIFICA"
+            [icon]="'monitoring'" [label]="'CLASS.'" (myClick)="isCollapse=false">
+        </my-navlink>
+
+        <!-- INFO -->
+        <div class="colonna" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false"
+            aria-controls="impostazioni" (click)="isCollapse=!isCollapse">
+            <div>
+                <my-icona [name]="'settings'"></my-icona>
             </div>
             <div>
-                <span>HOME</span>
-            </div>
-        </div>
-
-         <div *ngIf="isCollapse" class="colonna" id="dash" routerLink="/dashboard" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false">
-            <div class="icona">
-                <i class="bi bi-house-door-fill"></i>
-            </div>
-            <div>
-                <span>HOME</span>
-            </div>
-        </div>
-
-
-        <div *ngIf="!isCollapse&&play_comp" class="colonna" id="dash" routerLink="/schede-utenti">
-            <div class="icona">
-                <i class="bi bi-cash"></i>
-            </div>
-            <div>
-                <span>GIOCA</span>
-            </div>
-        </div>
-
-         <div *ngIf="isCollapse&&play_comp" class="colonna" id="dash" routerLink="/schede-utenti" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false">
-            <div class="icona">
-                <i class="bi bi-cash"></i>
-            </div>
-            <div>
-                <span>GIOCA</span>
-            </div>
-        </div>
-
-        <div *ngIf="!isCollapse&&!play_comp" class="colonna" id="dash" >
-            <div class="icona">
-                <i class="bi bi-cash" style="color: gray;"></i>
-            </div>
-            <div>
-                <span>GIOCA</span>
-            </div>
-        </div>
-
-         <div *ngIf="isCollapse&&!play_comp" class="colonna" id="dash"  data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false">
-            <div class="icona">
-                <i class="bi bi-cash" style="color: gray;"></i>
-            </div>
-            <div>
-                <span>GIOCA</span>
-            </div>
-        </div>
-
-
-        <div *ngIf="!isCollapse&&play_comp" class="colonna" id="dash" routerLink="/classifiche">
-            <div class="icona">
-                <i class="bi bi-graph-up-arrow"></i>
-            </div>
-            <div>
-                <span>CLASS.</span>
-            </div>
-        </div>
-
-         <div *ngIf="isCollapse&&play_comp" class="colonna" id="dash" routerLink="/classifiche" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false">
-            <div class="icona">
-                <i class="bi bi-graph-up-arrow"></i>
-            </div>
-            <div>
-                <span>CLASS.</span>
-            </div>
-        </div>
-
-        <div *ngIf="!isCollapse&&!play_comp" class="colonna" id="dash">
-            <div class="icona">
-                <i class="bi bi-graph-up-arrow" style="color: gray;"></i>
-            </div>
-            <div>
-                <span>CLASS.</span>
-            </div>
-        </div>
-
-         <div *ngIf="isCollapse&&!play_comp" class="colonna" id="dash"  data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false">
-            <div class="icona">
-                <i class="bi bi-graph-up-arrow" style="color: gray;"></i>
-            </div>
-            <div>
-                <span>CLASS.</span>
-            </div>
-        </div>
-
-    
-
-        <div class="colonna" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=!isCollapse">
-            <div class="icona">
-                <i class="bi bi-chat-dots"></i>
-            </div>
-            <div>
-                <span>INFO</span>
+                <span class="navbar-font-label"><b>INFO</b></span>
             </div>
         </div>
 
     </div>
 
     <div class="collapse" id="impostazioni" #impostazioni>
-   
-        <my-footer *ngIf="isCollapse" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false" aria-controls="impostazioni" (click)="isCollapse=false"></my-footer>
-        <my-footer  *ngIf="!isCollapse"></my-footer>
+
+        <my-footer *ngIf="isCollapse" data-bs-toggle="collapse" data-bs-target="#impostazioni" aria-expanded="false"
+            aria-controls="impostazioni" (click)="isCollapse=false"></my-footer>
+        <my-footer *ngIf="!isCollapse"></my-footer>
 
 
-      </div>
+    </div>
 
 </div>
-
-

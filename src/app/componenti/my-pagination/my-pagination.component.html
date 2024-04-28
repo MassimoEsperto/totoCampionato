@@ -1,18 +1,49 @@
-<div>
-    <nav aria-label="Page navigation example">
+  <!-- pagination -->
+  <div>
+    <nav *ngIf="data.table.length<6&&data.table.length>0" aria-label="Page navigation example" class="display-center pt-8">
         <ul class="pagination">
-          <li class="page-item">
-            <span class="page-link" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </span>
-          </li>
-          <li *ngFor="let item of input_table; let i = index" class="page-item active"><a class="page-link">{{i+1}}</a></li>
-      <li class="page-item">
-            <span class="page-link" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </span>
-          </li>
+            <li class="page-item" (click)="idxTable=idxTable!=0?idxTable-1:idxTable;pag.emit(idxTable)">
+                <span class="page-link cursore" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+            </li>
+            <li *ngFor="let item of data.table; let i = index" (click)="idxTable=i;pag.emit(idxTable)" class="page-item cursore"
+                [ngClass]="{'active': i == idxTable}"><a class="page-link">{{i+1}}</a></li>
+            <li class="page-item" (click)="idxTable=idxTable!=data.table.length-1?idxTable+1:idxTable;pag.emit(idxTable)">
+                <span class="page-link cursore" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </span>
+            </li>
         </ul>
-      </nav>
+    </nav>
+    <nav *ngIf="data.table.length>5" aria-label="Page navigation example" class="display-center pt-8">
+        <ul class="pagination">
+            <li class="page-item" (click)="idxTable=idxTable!=0?idxTable-1:idxTable;pag.emit(idxTable)">
+                <span class="page-link cursore" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </span>
+            </li>
+            <li (click)="idxTable=0;pag.emit(idxTable)" class="page-item cursore" [ngClass]="{'active': 0 == idxTable}"><a
+                    class="page-link">1</a></li>
+            <li (click)="idxTable=1;pag.emit(idxTable)" class="page-item cursore" [ngClass]="{'active': 1 == idxTable}"><a
+                    class="page-link">2</a></li>
+            <li *ngIf="idxTable>1&&idxTable<data.table.length-2" class="page-item active"><a
+                    class="page-link">{{idxTable+1}}</a></li>
+            <li *ngIf="idxTable<2||idxTable>data.table.length-3" class="page-item"><a class="page-link">..</a>
+            </li>
+            <li (click)="idxTable=data.table.length-2;pag.emit(idxTable)" class="page-item cursore"
+                [ngClass]="{'active': data.table.length-2 == idxTable}"><a
+                    class="page-link">{{data.table.length-1}}</a></li>
+            <li (click)="idxTable=data.table.length-1;pag.emit(idxTable)" class="page-item cursore"
+                [ngClass]="{'active': data.table.length-1 == idxTable}"><a
+                    class="page-link">{{data.table.length}}</a></li>
 
+            <li class="page-item" (click)="idxTable=idxTable!=data.table.length-1?idxTable+1:idxTable;pag.emit(idxTable)">
+                <span class="page-link cursore" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </span>
+            </li>
+        </ul>
+    </nav>
 </div>
+<!-- fine pagination -->

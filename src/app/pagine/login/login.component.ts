@@ -1,14 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { vrs } from 'src/app/classi/global-variables';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { AuthService } from 'src/app/servizi/autenticazione/auth.service';
 import { finalize } from 'rxjs/operators';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { AuthService } from 'src/servizi/autenticazione/auth.service';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { RegisterComponent } from './register/register.component';
+import { RecPassComponent } from './rec-pass/rec-pass.component';
+import { MyLocandina } from 'src/app/componenti/my-locandina/my-locandina.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'login',
+  standalone: true,
+  imports: [
+    CommonModule,
+    SignInComponent,
+    RegisterComponent,
+    RecPassComponent,
+    MyLocandina
+  ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent extends vrs implements OnInit {
 

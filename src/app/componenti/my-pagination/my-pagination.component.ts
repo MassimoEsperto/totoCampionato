@@ -1,24 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'my-pagination',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './my-pagination.component.html',
-  styleUrls: ['./my-pagination.component.scss']
+  styleUrl: './my-pagination.component.scss'
 })
 export class MyPagination implements OnInit {
 
-  @Input() input_table!: any;
-num:number=3
-
-  records:number=0
-modulo:number=0
-pages:number=0
-sel:number=1
-list:[]=[]
+  @Input() data: any;
+  @Output() pag = new EventEmitter();
+  idxTable: number = 0;
+  
 
   constructor() { }
 
-  ngOnInit(){
+  ngOnInit() {
   }
 
 

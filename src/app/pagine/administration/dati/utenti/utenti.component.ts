@@ -1,21 +1,32 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { SUCCESS_OK } from 'src/app/classi/costanti';
-import { vrs } from 'src/app/classi/global-variables';
-import { Utente } from 'src/app/model/Utente';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { ConfirmDialogService } from 'src/app/servizi/applicazione/confirm-dialog.service';
+import { UtenteModel } from 'src/app/classi/model/utente.model';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { MyButton } from 'src/app/componenti/my-button/my-button.component';
+import { FormUtente } from 'src/app/componenti/my-form-modal/form-utente/form-utente.component';
+import { SUCCESS_OK } from 'src/environments/env';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { ConfirmDialogService } from 'src/servizi/applicazione/confirm-dialog.service';
 
 @Component({
   selector: 'utenti',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton,
+    FormUtente
+  ],
   templateUrl: './utenti.component.html',
-  styleUrls: ['./utenti.component.scss']
+  styleUrl: './utenti.component.scss'
 })
 export class UtentiComponent extends vrs implements OnInit {
 
   utenti: any = []
-  utente = new Utente();
+  utente = new UtenteModel();
   @Input() combo: any;
 
   constructor(
@@ -29,7 +40,7 @@ export class UtentiComponent extends vrs implements OnInit {
     this.getUtenti()
   }
 
-  onUpdate(item: Utente) {
+  onUpdate(item: UtenteModel) {
     this.utente.set(item);
   }
 

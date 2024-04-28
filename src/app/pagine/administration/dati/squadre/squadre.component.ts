@@ -1,15 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { SUCCESS_OK } from 'src/app/classi/costanti';
-import { vrs } from 'src/app/classi/global-variables';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { ConfirmDialogService } from 'src/app/servizi/applicazione/confirm-dialog.service';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { MyButton } from 'src/app/componenti/my-button/my-button.component';
+import { SUCCESS_OK } from 'src/environments/env';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { ConfirmDialogService } from 'src/servizi/applicazione/confirm-dialog.service';
 
 @Component({
   selector: 'squadre',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './squadre.component.html',
-  styleUrls: ['./squadre.component.scss']
+  styleUrl: './squadre.component.scss'
 })
 export class SquadreComponent extends vrs implements OnInit {
 

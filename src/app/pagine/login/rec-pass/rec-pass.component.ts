@@ -1,13 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { vrs } from 'src/app/classi/global-variables';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { AuthService } from 'src/app/servizi/autenticazione/auth.service';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { MyButton } from 'src/app/componenti/my-button/my-button.component';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { AuthService } from 'src/servizi/autenticazione/auth.service';
 
 @Component({
   selector: 'rec-pass',
+  standalone: true,
+  imports: [
+    MyButton,
+    FormsModule
+  ],
   templateUrl: './rec-pass.component.html',
-  styleUrls: ['./rec-pass.component.scss']
+  styleUrl: './rec-pass.component.scss'
 })
 export class RecPassComponent extends vrs implements OnInit {
 

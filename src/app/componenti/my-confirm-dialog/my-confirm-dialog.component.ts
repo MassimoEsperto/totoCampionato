@@ -1,10 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ConfirmDialogService } from 'src/app/servizi/applicazione/confirm-dialog.service';
+import { ConfirmDialogService } from 'src/servizi/applicazione/confirm-dialog.service';
+
 
 @Component({
   selector: 'my-confirm-dialog',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './my-confirm-dialog.component.html',
-  styleUrls: ['./my-confirm-dialog.component.scss']
+  styleUrl: './my-confirm-dialog.component.scss'
 })
 export class MyConfirmDialog implements OnInit {  
 

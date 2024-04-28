@@ -1,14 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { vrs } from 'src/app/classi/global-variables';
-import { EventoScheda } from 'src/app/model/EventoScheda';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { PlayerService } from 'src/app/servizi/player/player.service';
+import { EventoSchedaModel } from 'src/app/classi/model/evento.scheda.model';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { PlayerService } from 'src/servizi/player/player.service';
+import { MyButton } from '../../my-button/my-button.component';
 
 @Component({
   selector: 'form-scheda',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './form-scheda.component.html',
-  styleUrls: ['./form-scheda.component.scss']
+  styleUrl: './form-scheda.component.scss'
 })
 export class FormScheda extends vrs implements OnInit {
 
@@ -16,7 +25,7 @@ export class FormScheda extends vrs implements OnInit {
   @Input() combo!: any;
   @Input() scheda_selezionata: number = 0;
   @ViewChild('closeModal') closeModal!: ElementRef;
-  @Input() scheda_master: Array<EventoScheda> = [];
+  @Input() scheda_master: Array<EventoSchedaModel> = [];
   @Output() submit = new EventEmitter();
   play_comp = this.player.getCompetizione()
 
@@ -34,7 +43,7 @@ export class FormScheda extends vrs implements OnInit {
   }
 
 
-  onPlayScheda(input: Array<EventoScheda>) {
+  onPlayScheda(input: Array<EventoSchedaModel>) {
 
     this.loading_btn = true
 
@@ -44,7 +53,7 @@ export class FormScheda extends vrs implements OnInit {
 
 
 
-  setDettaglioScheda(input: Array<EventoScheda>) {
+  setDettaglioScheda(input: Array<EventoSchedaModel>) {
 
     this.player.setDettaglioScheda(input, this.combo.id_giornata)
       .pipe(finalize(() =>
@@ -64,7 +73,7 @@ export class FormScheda extends vrs implements OnInit {
   }
 
 
-  cambiaGruppo(gruppo: any, evento: EventoScheda) {
+  cambiaGruppo(gruppo: any, evento: EventoSchedaModel) {
 
     let nuovoGruppo = this.combo.partite.find((i: { descrizione: string }) => i.descrizione == gruppo).gruppo
 

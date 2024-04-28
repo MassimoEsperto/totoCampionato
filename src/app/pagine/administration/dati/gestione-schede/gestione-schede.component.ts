@@ -1,14 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { SUCCESS_OK } from 'src/app/classi/costanti';
-import { vrs } from 'src/app/classi/global-variables';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
-import { ConfirmDialogService } from 'src/app/servizi/applicazione/confirm-dialog.service';
+import { FormsModule } from '@angular/forms';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { MyButton } from 'src/app/componenti/my-button/my-button.component';
+import { SUCCESS_OK } from 'src/environments/env';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { ConfirmDialogService } from 'src/servizi/applicazione/confirm-dialog.service';
 
 @Component({
   selector: 'gestione-schede',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './gestione-schede.component.html',
-  styleUrls: ['./gestione-schede.component.scss']
+  styleUrl: './gestione-schede.component.scss'
 })
 export class GestioneSchedeComponent extends vrs implements OnInit {
 

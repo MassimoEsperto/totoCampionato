@@ -1,18 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { vrs } from 'src/app/classi/global-variables';
-import { Competizione } from 'src/app/model/Competizione';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { MyButton } from '../../my-button/my-button.component';
+import { CompetizioneModel } from 'src/app/classi/model/competizione.model';
+
 
 @Component({
   selector: 'form-competizioni',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './form-competizioni.component.html',
-  styleUrls: ['./form-competizioni.component.scss']
+  styleUrl: './form-competizioni.component.scss'
 })
 export class FormCompetizioni extends vrs implements OnInit {
 
-  @Input() competizione!: Competizione;
+  @Input() competizione!: CompetizioneModel;
   @Output() submit = new EventEmitter();
   @ViewChild('closeModal') closeModal!: ElementRef;
 
@@ -24,7 +34,7 @@ export class FormCompetizioni extends vrs implements OnInit {
 
   ngOnInit() { }
 
-  onCompetizione(comp: Competizione) {
+  onCompetizione(comp: CompetizioneModel) {
     this.loading_btn = true
     if (comp.id) {
       this.updCompetizione(comp)
@@ -33,7 +43,7 @@ export class FormCompetizioni extends vrs implements OnInit {
     }
   }
 
-  updCompetizione(item: Competizione) {
+  updCompetizione(item: CompetizioneModel) {
 
     this.adminDati.updCompetizione(item)
       .pipe(finalize(() =>
@@ -52,7 +62,7 @@ export class FormCompetizioni extends vrs implements OnInit {
 
   }
 
-  setCompetizione(item: Competizione) {
+  setCompetizione(item: CompetizioneModel) {
 
     this.adminDati.setCompetizione(item)
       .pipe(finalize(() =>

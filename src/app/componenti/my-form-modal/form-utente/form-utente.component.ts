@@ -1,18 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { vrs } from 'src/app/classi/global-variables';
-import { Utente } from 'src/app/model/Utente';
-import { AdminDatiService } from 'src/app/servizi/admin/admin-dati.service';
-import { AlertService } from 'src/app/servizi/applicazione/alert.service';
+import { UtenteModel } from 'src/app/classi/model/utente.model';
+import { vrs } from 'src/app/classi/util/global-variables';
+import { AdminDatiService } from 'src/servizi/admin/admin-dati.service';
+import { AlertService } from 'src/servizi/applicazione/alert.service';
+import { MyButton } from '../../my-button/my-button.component';
+
 
 @Component({
   selector: 'form-utente',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MyButton
+  ],
   templateUrl: './form-utente.component.html',
-  styleUrls: ['./form-utente.component.scss']
+  styleUrl: './form-utente.component.scss'
 })
 export class FormUtente extends vrs implements OnInit {
 
-  @Input() utente!: Utente;
+  @Input() utente!: UtenteModel;
   @Input() combo: any;
   @Output() submit = new EventEmitter();
   @ViewChild('closeModal') closeModal!: ElementRef;
@@ -25,7 +35,7 @@ export class FormUtente extends vrs implements OnInit {
 
   ngOnInit() {}
 
-  onUpdate(item: Utente) {
+  onUpdate(item: UtenteModel) {
 
     this.loading_btn = true
 

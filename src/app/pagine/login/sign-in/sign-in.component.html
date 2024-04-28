@@ -4,18 +4,20 @@
     </div>
     <div class="card-body">
 
+           
+
         <form #loginForm="ngForm" (ngSubmit)="loading_btn=true;onLogin(loginForm.form.value)">
 
             <div class="pt-16 pb-16">
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <span class="input-group-text"><my-icona [name]="'taunt'"></my-icona></span>
                     <input id="username" name="username" type="text" class="form-control" placeholder="Username" ngModel
                         required>
                 </div>
             </div>
             <div class="pt-16 pb-16">
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                    <span class="input-group-text"> <my-icona [name]="'visibility_lock'"></my-icona></span>
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password"
                         ngModel required>
                 </div>
