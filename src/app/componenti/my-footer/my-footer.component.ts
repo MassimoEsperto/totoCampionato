@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { vrs } from 'src/app/classi/util/global-variables';
 import { PAGE } from 'src/environments/costanti';
+import { VERSION } from 'src/environments/env';
 import { AuthService } from 'src/servizi/autenticazione/auth.service';
 
 

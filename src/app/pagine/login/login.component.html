@@ -8,11 +8,16 @@
     </div>
 </div>
 
-<div *ngIf="loading_page">
+
+<div *ngIf="loading_page" >
 
     <div class="display-center">
         <div class="col-sm-12 col-md-6">
+            <div class="copyright">
+                <my-icona [name]="'copyright'"></my-icona>
+            </div>
             <img src="assets/img/welcome.webp" alt="totoTorneo" class="immagine">
+
         </div>
     </div>
     <my-locandina></my-locandina>

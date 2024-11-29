@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { RecPassComponent } from './rec-pass/rec-pass.component';
 import { MyLocandina } from 'src/app/componenti/my-locandina/my-locandina.component';
 import { CommonModule } from '@angular/common';
+import { MyIcona } from 'src/app/componenti/my-icona/my-icona.component';
 
 @Component({
   selector: 'login',
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     SignInComponent,
     RegisterComponent,
     RecPassComponent,
-    MyLocandina
+    MyLocandina,
+    MyIcona
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
